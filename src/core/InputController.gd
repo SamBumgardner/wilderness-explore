@@ -10,9 +10,13 @@ var direction_priority: Array[int] = []
 func _process(_delta: float) -> void:
     has_polled_movement_this_frame = false
 
-func get_movement_direction() -> Vector2i:
+func get_movement_directions() -> Array[Vector2i]:
     _update_direction_priority()
-    return Vector2i.ZERO if direction_priority.is_empty() else direction_priority.front()
+    var result: Array[Vector2i] = []
+    for idx in direction_priority:
+        result.append(direction_vectors[idx])
+    result.reverse()
+    return result
 
 func _update_direction_priority():
     if not has_polled_movement_this_frame:

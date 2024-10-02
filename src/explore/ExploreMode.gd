@@ -1,5 +1,7 @@
 class_name ExploreMode extends Node
 
+signal explorer_moved
+
 @export var map: ExploreMap
 
 var input_controller: InputController
@@ -23,18 +25,25 @@ func _ready():
 
 func _process(_delta: float) -> void:
     # may want to check inv. button or menu before moving.
+    var move_directions: Array[Vector2i] = input_controller.get_movement_directions()
     if (take_actions):
-        var move_direction = input_controller.get_movement_direction()
-        var destination_position = explorer.position + move_direction
-        if map.valid_explorer_position(destination_position):
-            explorer.set_position(destination_position)
-            take_actions = false
-            # give up control, emit event to for display to run its course.
-            # can start doing stuff again after "_on_activate_explore_mode" is triggered again
-        else:
-            # signal that failed move was attempted
-            # give up control until receiving it back.
+        var bonk_move: bool = false
+        for attempted_direction in move_directions:
+            var destination_position = explorer.position + attempted_direction
+            if map.valid_explorer_position(destination_position):
+                bonk_move = false
+                explorer.set_position(destination_position)
+                take_actions = false
+                explorer_moved.emit()
+                break
+                # give up control, emit event to for display to run its course.
+                # can start doing stuff again after "_on_activate_explore_mode" is triggered again
+            else:
+                bonk_move = true
+        
+        if bonk_move:
             pass
+            # emit event with highest priority direction + the fact the move bonked
 
 
 func _on_activate_explore_mode():

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlid4pwthag5g"]
+
+[ext_resource type="Script" path="res://src/scenes/text_display_test.gd" id="1_aklu8"]
+[ext_resource type="Script" path="res://src/explore/display/text/ExploreDisplayText.gd" id="2_wwlei"]
+[ext_resource type="Script" path="res://src/explore/ExploreMode.gd" id="3_1rumk"]
+[ext_resource type="Resource" uid="uid://do8j2ptefj7sh" path="res://data/maps/001_test_map.tres" id="4_dsnbw"]
+
+[node name="TextDisplayTest" type="Node2D"]
+script = ExtResource("1_aklu8")
+
+[node name="ExploreDisplayText" type="Node" parent="." node_paths=PackedStringArray("exploreMode")]
+script = ExtResource("2_wwlei")
+exploreMode = NodePath("../ExploreMode")
+
+[node name="ExploreMode" type="Node" parent="."]
+script = ExtResource("3_1rumk")
+map = ExtResource("4_dsnbw")

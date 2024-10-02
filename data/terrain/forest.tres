@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Terrain" load_steps=2 format=3 uid="uid://dbrs6fsju0cup"]
+
+[ext_resource type="Script" path="res://src/explore/Terrain.gd" id="1_rgbmk"]
+
+[resource]
+script = ExtResource("1_rgbmk")
+name = "TREE"
+visibility_bonus = 0
+visibility_cost = 1
+threat_value = 1

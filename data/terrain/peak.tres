@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Terrain" load_steps=2 format=3 uid="uid://243oq4bohxmk"]
+
+[ext_resource type="Script" path="res://src/explore/Terrain.gd" id="1_bydrk"]
+
+[resource]
+script = ExtResource("1_bydrk")
+name = "PEAK"
+visibility_bonus = 3
+visibility_cost = 5
+threat_value = 3

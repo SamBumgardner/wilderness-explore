@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ExploreMap" load_steps=7 format=3 uid="uid://do8j2ptefj7sh"]
+
+[ext_resource type="Script" path="res://src/explore/ExploreMap.gd" id="1_erpsj"]
+[ext_resource type="Script" path="res://src/explore/Terrain.gd" id="2_jqfu8"]
+[ext_resource type="Resource" uid="uid://dbrs6fsju0cup" path="res://data/terrain/forest.tres" id="3_7unjb"]
+[ext_resource type="Resource" uid="uid://duey27f6bmqrg" path="res://data/terrain/hill.tres" id="4_q37lm"]
+[ext_resource type="Resource" uid="uid://dnfhuuibxf0kk" path="res://data/terrain/plain.tres" id="6_de620"]
+[ext_resource type="Resource" uid="uid://243oq4bohxmk" path="res://data/terrain/peak.tres" id="6_vmryu"]
+
+[resource]
+script = ExtResource("1_erpsj")
+name = "Test Map 1"
+start_position = Vector2i(0, 0)
+terrains = Array[ExtResource("2_jqfu8")]([ExtResource("3_7unjb"), ExtResource("6_vmryu"), ExtResource("4_q37lm"), ExtResource("6_de620")])
+static_encounters = {}
+tile_gen = PackedInt32Array(0, 2, 2, 1, 2, 0, 0, 3, 2, 3)
+width = 5
+height = 2
