@@ -6,7 +6,8 @@ var position: Vector2i
 var stats_max: PackedInt32Array
 var stats: PackedInt32Array
 
-func _init(_position: Vector2i, _stats_max: PackedInt32Array, _stats: Array) -> void:
+func _init(_position: Vector2i, _stats_max: PackedInt32Array,
+        _stats: PackedInt32Array) -> void:
     _validate_stats_array(_stats_max)
     _validate_stats_array(_stats)
     position = _position
