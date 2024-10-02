@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Challenge" load_steps=5 format=3 uid="uid://ojpin5fjm3ik"]
+
+[ext_resource type="Script" path="res://src/explore/Challenge.gd" id="1_4wg44"]
+[ext_resource type="Script" path="res://src/explore/StatCost.gd" id="2_bx58a"]
+
+[sub_resource type="Resource" id="Resource_wesek"]
+script = ExtResource("2_bx58a")
+stat_hidden = 0
+static_cost = 2
+rolls = Array[int]([4])
+
+[sub_resource type="Resource" id="Resource_tu3iy"]
+script = ExtResource("2_bx58a")
+stat_hidden = 0
+static_cost = 2
+rolls = Array[int]([])
+
+[resource]
+script = ExtResource("1_4wg44")
+title = "Fight"
+description = "You stand your ground. "
+tags = PackedStringArray("weapon", "armor", "fire", "silver")
+calculated_stat_cost = Array[int]([])
+stat_costs = Array[ExtResource("2_bx58a")]([SubResource("Resource_wesek"), null, null, SubResource("Resource_tu3iy")])

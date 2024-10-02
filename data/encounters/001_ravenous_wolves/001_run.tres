@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Challenge" load_steps=5 format=3 uid="uid://df8in4bt1a8fg"]
+
+[ext_resource type="Script" path="res://src/explore/Challenge.gd" id="1_05rcc"]
+[ext_resource type="Script" path="res://src/explore/StatCost.gd" id="2_ooe7s"]
+
+[sub_resource type="Resource" id="Resource_jts10"]
+script = ExtResource("2_ooe7s")
+stat_hidden = 0
+static_cost = 2
+rolls = Array[int]([4])
+
+[sub_resource type="Resource" id="Resource_gadt4"]
+script = ExtResource("2_ooe7s")
+stat_hidden = 0
+static_cost = 2
+rolls = Array[int]([])
+
+[resource]
+script = ExtResource("1_05rcc")
+title = "Run"
+description = "You choose to outpace the beasts."
+tags = PackedStringArray("athletics", "escape", "boots", "direction")
+calculated_stat_cost = Array[int]([])
+stat_costs = Array[ExtResource("2_ooe7s")]([null, SubResource("Resource_jts10"), SubResource("Resource_gadt4"), null])

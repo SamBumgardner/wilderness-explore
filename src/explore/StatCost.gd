@@ -1,8 +1,8 @@
 class_name StatCost extends Resource
 
-var stat_hidden: Consts.StatHidden
-var static_cost: int
-var rolls: Array[int]
+@export var stat_hidden: Consts.StatHidden
+@export var static_cost: int
+@export var rolls: Array[int]
 
 func _init(_static_cost: int = 0, _rolls: Array[int] = [],
         _stat_hidden: Consts.StatHidden = Consts.StatHidden.SHOW) -> void:
