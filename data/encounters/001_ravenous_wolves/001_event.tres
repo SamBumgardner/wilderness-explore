@@ -8,6 +8,6 @@
 [resource]
 script = ExtResource("2_4ghey")
 title = "Ravenous Wolves!"
-description = "You hear the howls of shadow wolves in the distance..."
+description = "You hear the howls of hungry wolves in the distance..."
 tags = PackedStringArray("beast")
 challenge_options = Array[ExtResource("1_hy8fa")]([ExtResource("2_ak4u4"), ExtResource("3_4jmuj")])

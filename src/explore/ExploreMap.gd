@@ -29,3 +29,14 @@ func valid_explorer_position(position: Vector2i):
         and (width * position.y + position.x) < tiles.size()
     # Want to do more involved checks in the future - like is the tile valid 
     # for our character to stand on?
+
+func get_tile_at(position: Vector2i) -> Tile:
+    var result: Tile
+    var target_idx: int = width * position.y + position.x
+
+    if target_idx >= tiles.size():
+        push_warning("attempted to get invalid tile index %s" % position)
+    else:
+        result = tiles[target_idx]
+
+    return result

@@ -5,5 +5,9 @@ extends Node2D
 
 func _ready() -> void:
     explore_mode.explorer_moved.connect(explore_display_text._display_map)
-    explore_display_text.display_updates_done.connect(explore_mode._on_activate_explore_mode)
+    explore_display_text.display_updates_done.connect(explore_mode._on_moving_finished)
+
+    explore_mode.explorer_encounter.connect(explore_display_text._display_encounter_started)
+    explore_display_text.encounter_initial_display_done.connect(explore_mode._on_encounter_finished)
+
     explore_display_text._display_map()

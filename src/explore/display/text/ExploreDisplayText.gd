@@ -1,6 +1,7 @@
 class_name ExploreDisplayText extends Node
 
 signal display_updates_done
+signal encounter_initial_display_done
 
 @export var exploreMode: ExploreMode
 @export var travel_time_max: float = 1.0
@@ -31,7 +32,28 @@ func _start_travel():
     traveling = true
     travel_time_remaining = travel_time_max
 
-func _process(delta:float):
+func _display_encounter_started(_explorer: Explorer, encounter: Encounter):
+    var display_encounter_tween = create_tween()
+
+    var option_titles = encounter.challenge_options.map(func(x: Challenge): return x.title)
+    display_encounter_tween.tween_interval(.5)
+    display_encounter_tween.tween_callback(print.bind("*** AN ENCOUNTER OCURRED!!! ***"))
+    display_encounter_tween.tween_interval(.2)
+    display_encounter_tween.tween_callback(
+        func():
+            var full_display: PackedStringArray = []
+            full_display.append(encounter.title)
+            full_display.append(encounter.description)
+            full_display.append("  OPTIONS:")
+            full_display.append(", ".join(option_titles))
+            full_display.append("")
+            full_display.append("Resuming exploration play in 1s...")
+            print("\n".join(full_display))
+    )
+    display_encounter_tween.tween_interval(1)
+    display_encounter_tween.tween_callback(encounter_initial_display_done.emit)
+
+func _process(delta: float):
     if traveling:
         travel_time_remaining -= delta
         if travel_time_remaining <= 0:
